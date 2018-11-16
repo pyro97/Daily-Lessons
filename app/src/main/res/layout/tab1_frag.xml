@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/lunOrario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="17dp"
+                android:background="@color/colorPrimary"
+                android:editable="false"
+                android:text="13"
+                android:textColor="@android:color/background_light" />
+
+            <TextView
+                android:id="@+id/lunMateria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="32dp"
+                android:editable="false"
+                android:text="TextView"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lunClasse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/lunMateria"
+                android:layout_marginEnd="40dp"
+                android:text="TextView"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/lun1Orario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/lun1Materia"
+                android:layout_alignStart="@+id/lunOrario"
+                android:layout_marginStart="0dp"
+                android:background="@android:color/holo_orange_dark"
+                android:text="15"
+                android:textColor="@android:color/background_light" />
+
+            <TextView
+                android:id="@+id/lun1Materia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="111dp"
+                android:text="TextView"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lun1Classe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/lun1Orario"
+                android:layout_alignStart="@+id/lunClasse"
+                android:text="TextView"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/lun3Orario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/lunOrario"
+                android:layout_marginTop="246dp"
+                android:background="@android:color/holo_red_dark"
+                android:text="17"
+                android:textColor="@android:color/background_light" />
+
+            <TextView
+                android:id="@+id/lun2Materia"
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/background_dark"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/lun2Orario"
+                android:layout_centerHorizontal="true"
+                android:text="TextView"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lun2Classe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/lun2Orario"
+                android:layout_alignStart="@+id/lunClasse"
+                android:text="TextView"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/lun2Orario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/lunOrario"
+                android:layout_marginTop="169dp"
+                android:background="@android:color/holo_blue_bright"
+                android:text="16"
+                android:textColor="@android:color/background_light" />
+
+            <TextView
+                android:id="@+id/lun3Classe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/lun3Orario"
+                android:layout_alignStart="@+id/lunClasse"
+                android:text="TextView"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/lun3Materia"
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/background_dark"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/lun3Orario"
+                android:layout_centerHorizontal="true"
+                android:text="TextView"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/lun4Orario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/lunOrario"
+                android:layout_marginTop="319dp"
+                android:background="@android:color/holo_orange_light"
+                android:text="19"
+                android:textColor="@android:color/background_light" />
+
+            <TextView
+                android:id="@+id/lun4Classe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/lun4Orario"
+                android:layout_alignStart="@+id/lunClasse"
+                android:text="TextView"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/lun4Materia"
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/background_dark"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/lun4Orario"
+                android:layout_centerHorizontal="true"
+                android:text="TextView"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="62dp"
+        android:layout_marginEnd="157dp"
+        android:clickable="true"
+        android:tint="@android:color/background_light"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/fabio"
+        android:layout_marginEnd="91dp"
+        android:clickable="true"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/fabio"
+        android:layout_marginEnd="24dp"
+        android:clickable="true"
+        android:tint="@android:color/background_light"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+</RelativeLayout>
