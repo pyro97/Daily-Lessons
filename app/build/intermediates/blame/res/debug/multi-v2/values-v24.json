@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/simonepirozzi/AndroidStudioProjects/MyApplication8/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "outputFile": "/Users/spirozzi/Lesson-Timetable/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/Users/simonepirozzi/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/44d4d04de95cdb12929cb81d1db5f0c7/res/values-v24/values-v24.xml",
+                    "source": "/Users/spirozzi/.gradle/caches/transforms-2/files-2.1/a733085efbe8a59459e77c4b0b0efbe4/appcompat-1.0.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/simonepirozzi/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/484b61f43b955f66534415633ffc6dec/res/values-v24/values-v24.xml",
+                    "source": "/Users/spirozzi/.gradle/caches/transforms-2/files-2.1/5f544c9055cb4aecaf82b59a4084e4db/media-1.0.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

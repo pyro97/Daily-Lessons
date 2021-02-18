@@ -1,27 +1,17 @@
 package pyroapp.myapplication;
 
-import android.content.SharedPreferences;
-import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.TextView;
-
-
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
@@ -37,12 +27,12 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
 
     /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
+     * The {@link PagerAdapter} that will provide
      * fragments for each of the sections. We use a
      * {@link FragmentPagerAdapter} derivative, which will keep every
      * loaded fragment in memory. If this becomes too memory intensive, it
      * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     * {@link FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -156,25 +146,37 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+            Bundle args = new Bundle();
             switch (position) {
                 case 0:
-                    tab1 t1 = new tab1();
+                    FragmentTab t1 = new FragmentTab();
+                    args.putString("selectedDay","mon");
+                    t1.setArguments(args);
                     return t1;
-
                 case 1:
-                    tab2 t2 = new tab2();
+                    FragmentTab t2 = new FragmentTab();
+                    args.putString("selectedDay","tue");
+                    t2.setArguments(args);
                     return t2;
                case 2:
-                    tab3 t3 = new tab3();
-                    return t3;
+                   FragmentTab t3 = new FragmentTab();
+                   args.putString("selectedDay","wed");
+                   t3.setArguments(args);
+                   return t3;
                 case 3:
-                    tab4 t4 = new tab4();
+                    FragmentTab t4 = new FragmentTab();
+                    args.putString("selectedDay","thu");
+                    t4.setArguments(args);
                     return t4;
                 case 4:
-                    tab5 t5 = new tab5();
+                    FragmentTab t5 = new FragmentTab();
+                    args.putString("selectedDay","fry");
+                    t5.setArguments(args);
                     return t5;
                 case 5:
-                    tab6 t6 = new tab6();
+                    FragmentTab t6 = new FragmentTab();
+                    args.putString("selectedDay","sat");
+                    t6.setArguments(args);
                     return t6;
 
 
