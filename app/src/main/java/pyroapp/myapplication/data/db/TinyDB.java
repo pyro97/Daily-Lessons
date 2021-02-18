@@ -1,4 +1,4 @@
-package pyroapp.myapplication;
+package pyroapp.myapplication.data.db;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,4 +1,4 @@
-package pyroapp.myapplication;
+package pyroapp.myapplication.data.db.model;
 
 public class Subject {
     private String classroom,subjectName,time;

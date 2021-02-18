@@ -1,7 +1,9 @@
-package pyroapp.myapplication;
+package pyroapp.myapplication.ui.main;
 
 import android.os.Bundle;
+
 import com.google.android.material.tabs.TabLayout;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -10,6 +12,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 
 import com.google.android.gms.ads.AdRequest;
@@ -22,6 +25,11 @@ import java.util.Locale;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import pyroapp.myapplication.ui.tab.FragmentTab;
+import pyroapp.myapplication.R;
+import pyroapp.myapplication.utils.Constants;
+import pyroapp.myapplication.utils.WeekDaysEnum;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,17 +51,17 @@ public class MainActivity extends AppCompatActivity {
     private InterstitialAd mInterstitialAd;
     private ScheduledExecutorService scheduler;
     private boolean isVisible;
+    public static final int initialDelay = 30, period = 45;
+    private MainPresenter mPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        MobileAds.initialize(this, "ca-app-pub-9751551150368721~3117778930");
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-9751551150368721/6239067611");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
+        mPresenter = new MainPresenter(this);
+        mPresenter.initializeBanner();
+        mInterstitialAd = mPresenter.initializeInterstital();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,37 +75,42 @@ public class MainActivity extends AppCompatActivity {
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         String weekDay;
-        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+        SimpleDateFormat dayFormat = new SimpleDateFormat(Constants.DATE_FORMAT, Locale.US);
 
         Calendar calendar = Calendar.getInstance();
         weekDay = dayFormat.format(calendar.getTime());
 
-        if(weekDay.equals("Monday"))
-             mViewPager.setCurrentItem(0);
-        else if(weekDay.equals("Tuesday"))
-            mViewPager.setCurrentItem(1);
-        else if(weekDay.equals("Wednesday"))
-            mViewPager.setCurrentItem(2);
-        else if(weekDay.equals("Thursday"))
-            mViewPager.setCurrentItem(3);
-        else if(weekDay.equals("Friday"))
-            mViewPager.setCurrentItem(4);
-        else if(weekDay.equals("Saturday"))
-            mViewPager.setCurrentItem(5);
-        else
-            mViewPager.setCurrentItem(0);
+        switch (WeekDaysEnum.valueOf(weekDay)){
+            case MONDAY:
+                mViewPager.setCurrentItem(0);
+                break;
+            case TUESDAY:
+                mViewPager.setCurrentItem(1);
+                break;
+            case WEDNESDAY:
+                mViewPager.setCurrentItem(2);
+                break;
+            case THURSDAY:
+                mViewPager.setCurrentItem(3);
+                break;
+            case FRIDAY:
+                mViewPager.setCurrentItem(4);
+                break;
+            case SATURDAY:
+                mViewPager.setCurrentItem(5);
+                break;
+        }
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
 
-
-
     }
+
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
         isVisible = true;
-        if(scheduler == null){
+        if (scheduler == null) {
             scheduler = Executors.newSingleThreadScheduledExecutor();
             scheduler.scheduleAtFixedRate(new Runnable() {
                 public void run() {
@@ -106,25 +119,22 @@ public class MainActivity extends AppCompatActivity {
                             if (mInterstitialAd.isLoaded() && isVisible) {
                                 mInterstitialAd.show();
                             }
-                            mInterstitialAd = new InterstitialAd(MainActivity.this);
-                            mInterstitialAd.setAdUnitId("ca-app-pub-9751551150368721/6239067611");
-                            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                            mInterstitialAd = mPresenter.initializeInterstital();
                         }
                     });
                 }
-            }, 30, 45, TimeUnit.SECONDS);
+            }, initialDelay, period, TimeUnit.SECONDS);
 
         }
 
     }
-    //.. code
 
     @Override
     protected void onStop() {
         super.onStop();
         scheduler.shutdownNow();
         scheduler = null;
-        isVisible =false;
+        isVisible = false;
     }
 
 
@@ -134,8 +144,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-
 
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -150,36 +158,34 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     FragmentTab t1 = new FragmentTab();
-                    args.putString("selectedDay","mon");
+                    args.putString(Constants.KEY_DAY, String.valueOf(WeekDaysEnum.MONDAY));
                     t1.setArguments(args);
                     return t1;
                 case 1:
                     FragmentTab t2 = new FragmentTab();
-                    args.putString("selectedDay","tue");
+                    args.putString(Constants.KEY_DAY, String.valueOf(WeekDaysEnum.TUESDAY));
                     t2.setArguments(args);
                     return t2;
-               case 2:
-                   FragmentTab t3 = new FragmentTab();
-                   args.putString("selectedDay","wed");
-                   t3.setArguments(args);
-                   return t3;
+                case 2:
+                    FragmentTab t3 = new FragmentTab();
+                    args.putString(Constants.KEY_DAY, String.valueOf(WeekDaysEnum.WEDNESDAY));
+                    t3.setArguments(args);
+                    return t3;
                 case 3:
                     FragmentTab t4 = new FragmentTab();
-                    args.putString("selectedDay","thu");
+                    args.putString(Constants.KEY_DAY, String.valueOf(WeekDaysEnum.THURSDAY));
                     t4.setArguments(args);
                     return t4;
                 case 4:
                     FragmentTab t5 = new FragmentTab();
-                    args.putString("selectedDay","fry");
+                    args.putString(Constants.KEY_DAY, String.valueOf(WeekDaysEnum.FRIDAY));
                     t5.setArguments(args);
                     return t5;
                 case 5:
                     FragmentTab t6 = new FragmentTab();
-                    args.putString("selectedDay","sat");
+                    args.putString(Constants.KEY_DAY, String.valueOf(WeekDaysEnum.SATURDAY));
                     t6.setArguments(args);
                     return t6;
-
-
                 default:
                     return null;
             }
@@ -187,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 6;
         }
 

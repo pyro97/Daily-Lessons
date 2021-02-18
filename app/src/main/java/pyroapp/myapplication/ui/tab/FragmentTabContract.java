@@ -1,10 +1,12 @@
-package pyroapp.myapplication;
+package pyroapp.myapplication.ui.tab;
 
 import java.util.ArrayList;
 
+import pyroapp.myapplication.data.db.model.Subject;
+
 public class FragmentTabContract {
 
-    public interface View{
+    public interface View {
         void showActionDialog(int position);
     }
 

@@ -1,10 +1,14 @@
-package pyroapp.myapplication;
+package pyroapp.myapplication.ui.tab;
 
 import android.content.Context;
 
 import java.util.ArrayList;
 
-public class FragmentTabPresenter implements FragmentTabContract.Presenter{
+import pyroapp.myapplication.data.db.TinyDB;
+import pyroapp.myapplication.data.db.model.Subject;
+import pyroapp.myapplication.ui.common.CustomAdapter;
+
+public class FragmentTabPresenter implements FragmentTabContract.Presenter {
 
     private Context context;
     private TinyDB tinyDB;
@@ -12,7 +16,7 @@ public class FragmentTabPresenter implements FragmentTabContract.Presenter{
     private String selectedDay;
     private FragmentTabContract.View view;
 
-    FragmentTabPresenter(Context context, TinyDB db, CustomAdapter customAdapter, String selectedDay, FragmentTabContract.View view){
+    FragmentTabPresenter(Context context, TinyDB db, CustomAdapter customAdapter, String selectedDay, FragmentTabContract.View view) {
         this.context = context;
         this.tinyDB = db;
         this.customAdapter = customAdapter;
@@ -34,7 +38,7 @@ public class FragmentTabPresenter implements FragmentTabContract.Presenter{
     public void addElement(Subject subject) {
         ArrayList<Object> elements = getAllElements();
         elements.add(subject);
-        tinyDB.putListObject(selectedDay,elements);
+        tinyDB.putListObject(selectedDay, elements);
         customAdapter.add(subject);
         customAdapter.notifyDataSetChanged();
 
@@ -42,10 +46,10 @@ public class FragmentTabPresenter implements FragmentTabContract.Presenter{
 
     @Override
     public void editListElements(ArrayList<Object> elements) {
-        tinyDB.putListObject(selectedDay,elements);
+        tinyDB.putListObject(selectedDay, elements);
         customAdapter.clear();
-        for(int j=0;j<elements.size();j++){
-            Subject subject= (Subject) elements.get(j);
+        for (int j = 0; j < elements.size(); j++) {
+            Subject subject = (Subject) elements.get(j);
             customAdapter.add(subject);
         }
         customAdapter.notifyDataSetChanged();
@@ -58,11 +62,11 @@ public class FragmentTabPresenter implements FragmentTabContract.Presenter{
     }
 
     @Override
-    public void updateAdapter(){
+    public void updateAdapter() {
         ArrayList<Object> elements = new ArrayList<>();
         elements.addAll(getAllElements());
-        for(int j=0;j<elements.size();j++){
-            Subject subject= (Subject) elements.get(j);
+        for (int j = 0; j < elements.size(); j++) {
+            Subject subject = (Subject) elements.get(j);
             customAdapter.add(subject);
         }
         customAdapter.notifyDataSetChanged();

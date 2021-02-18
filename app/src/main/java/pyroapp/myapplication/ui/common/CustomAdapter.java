@@ -1,4 +1,4 @@
-package pyroapp.myapplication;
+package pyroapp.myapplication.ui.common;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,13 +10,17 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import pyroapp.myapplication.ui.tab.FragmentTabPresenter;
+import pyroapp.myapplication.R;
+import pyroapp.myapplication.data.db.model.Subject;
+
 public class CustomAdapter extends ArrayAdapter<Subject> {
     private int resource;
     private LayoutInflater inflater;
     private Subject row;
     private Context context;
     private Button time;
-    private TextView classroom,subject;
+    private TextView classroom, subject;
     private FragmentTabPresenter presenter;
 
     public CustomAdapter(Context context, int resource, List<Subject> objects) {
@@ -49,7 +53,7 @@ public class CustomAdapter extends ArrayAdapter<Subject> {
         return v;
     }
 
-    public void setPresenter(FragmentTabPresenter t){
+    public void setPresenter(FragmentTabPresenter t) {
         presenter = t;
     }
 }
