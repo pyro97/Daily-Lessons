@@ -1,4 +1,4 @@
-# Lesson-Timetable
+# Daily Lessons
 Android app about university agenda, to organize your week by inserting, modifying and removing lessons.
 <br>
 Google Play: https://bit.ly/3pwuNGe
