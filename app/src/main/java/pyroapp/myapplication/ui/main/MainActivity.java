@@ -1,23 +1,19 @@
 package pyroapp.myapplication.ui.main;
 
 import android.os.Bundle;
+import android.view.Menu;
 
-import com.google.android.material.tabs.TabLayout;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.view.Menu;
-
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,8 +22,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import pyroapp.myapplication.ui.tab.FragmentTab;
 import pyroapp.myapplication.R;
+import pyroapp.myapplication.ui.tab.FragmentTab;
 import pyroapp.myapplication.utils.Constants;
 import pyroapp.myapplication.utils.WeekDaysEnum;
 
@@ -79,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
         weekDay = dayFormat.format(calendar.getTime());
-
-        switch (WeekDaysEnum.valueOf(weekDay)){
+        switch (WeekDaysEnum.fromString(weekDay)){
             case MONDAY:
                 mViewPager.setCurrentItem(0);
                 break;

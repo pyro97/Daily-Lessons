@@ -1,6 +1,7 @@
 package pyroapp.myapplication.ui.common;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import java.util.List;
 import pyroapp.myapplication.ui.tab.FragmentTabPresenter;
 import pyroapp.myapplication.R;
 import pyroapp.myapplication.data.db.model.Subject;
+import pyroapp.myapplication.utils.Utils;
 
 public class CustomAdapter extends ArrayAdapter<Subject> {
     private int resource;
@@ -41,13 +43,13 @@ public class CustomAdapter extends ArrayAdapter<Subject> {
         subject = v.findViewById(R.id.subject);
 
         time.setText(row.getTime());
-        classroom.setText(row.getClassroom());
+        time.setBackgroundColor(Utils.getColor(position));
         subject.setText(row.getSubjectName());
+        classroom.setText(row.getClassroom());
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.selectAction(position);
-
             }
         });
         return v;

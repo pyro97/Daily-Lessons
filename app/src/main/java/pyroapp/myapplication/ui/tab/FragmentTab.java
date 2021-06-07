@@ -111,12 +111,15 @@ public class FragmentTab extends Fragment implements FragmentTabContract.View {
         final EditText input1 = new EditText(requireContext());
         TextView text2 = new TextView(requireContext());
         final EditText input2 = new EditText(requireContext());
-        input2.setInputType(InputType.TYPE_CLASS_DATETIME);
+        input2.setInputType(InputType.TYPE_CLASS_NUMBER);
         text.setTextColor(getResources().getColor(R.color.colorAccent));
+        text.setPadding(20,0,0,0);
         text.setText(getString(R.string.title_subject));
         text1.setText(getString(R.string.title_classroom));
+        text1.setPadding(20,0,0,0);
         text1.setTextColor(getResources().getColor(R.color.colorAccent));
         text2.setText(getString(R.string.title_time));
+        text2.setPadding(20,0,0,0);
         text2.setTextColor(getResources().getColor(R.color.colorAccent));
         layout.addView(text);
         layout.addView(input);
@@ -135,17 +138,17 @@ public class FragmentTab extends Fragment implements FragmentTabContract.View {
         builder.setPositiveButton(positiveTitle, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String temp = input.getText().toString();
-                String temp1 = input1.getText().toString();
-                String temp2 = input2.getText().toString();
-                checkNewFields(temp, temp1, temp2);
+                String subject = input.getText().toString();
+                String classroom = input1.getText().toString();
+                String time = input2.getText().toString();
+                checkNewFields(subject, classroom, time);
             }
         });
         builder.show();
     }
 
-    private void checkNewFields(String temp, String temp1, String temp2) {
-        if (temp.length() == 0 || temp1.length() == 0 || temp2.length() == 0) {
+    private void checkNewFields(String subject, String classroom, String time) {
+        if (subject.length() == 0 || classroom.length() == 0 || time.length() == 0) {
             final AlertDialog.Builder builderCheck = new AlertDialog.Builder(requireContext());
             builderCheck.setTitle(getString(R.string.title_warning));
             builderCheck.setMessage(getString(R.string.full_field_desc));
@@ -160,10 +163,10 @@ public class FragmentTab extends Fragment implements FragmentTabContract.View {
             if (isEdit) {
                 ArrayList<Object> list = mPresenter.getAllElements();
                 list.remove(position);
-                list.add(new Subject(temp, temp1, temp2));
+                list.add(new Subject(classroom, subject, time));
                 mPresenter.editListElements(list);
             } else {
-                mPresenter.addElement(new Subject(temp, temp1, temp2));
+                mPresenter.addElement(new Subject(classroom, subject, time));
             }
         }
 
