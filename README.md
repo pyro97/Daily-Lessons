@@ -8,7 +8,7 @@ Google Play: https://bit.ly/3pwuNGe
   <img src="readme/lessons.gif" width="300">
 </p>
 
-#### The app has following packages:
+#### This app has following packages:
 1. **ui**: View classes along with their corresponding Presenter.
 2. **data**: It contains all the data accessing and manipulating components.
 3. **utils**: Utility classes.
