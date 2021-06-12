@@ -14,7 +14,7 @@ Google Play: https://bit.ly/3pwuNGe
 3. **utils**: Utility classes.
 
 
-#### This is a MVC Java Project
+#### This is a MVP Java Project
 - I used TinyD to create a local DB to save and managed user data about all lessons inserted in the application (https://tinydb.readthedocs.io/en/latest/index.html)
 - I used Google Mobile Ads to show banner and interstitial
 
